@@ -13,9 +13,9 @@ public enum PartialBuilder {
 
   public typealias Component = [any PartialBuilable]
 
-   public static func buildExpression(_ expression: String) -> Component {
-     [Partial(expression)]
-   }
+  public static func buildExpression(_ expression: String) -> Component {
+    [Partial(expression)]
+  }
 
   public static func buildExpression(_ expression: [any Expression]) -> Component {
     expression
@@ -25,7 +25,8 @@ public enum PartialBuilder {
     [expression]
   }
 
-  //  public static func buildExpression(_ expression: any CustomStringBuilderConvertible) -> Component {
+  //  public static func buildExpression(_ expression: any CustomStringBuilderConvertible) ->
+  //  Component {
   //    buildExpression(expression.descriptionBuilder.map(\.string).joined(separator: "\n"))
   //  }
 

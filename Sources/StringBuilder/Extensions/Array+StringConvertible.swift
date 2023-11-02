@@ -1,6 +1,6 @@
 
-extension [any StringBuildable] {
-  public var lines: [String] {
+public extension [any StringBuildable] {
+  var lines: [String] {
     let strings = flatMap { element in
       let stringValue = element.lines
       return stringValue
@@ -8,7 +8,7 @@ extension [any StringBuildable] {
     return strings
   }
 
-  public var string: String {
+  var string: String {
     lines.joined(separator: "\n")
   }
 }

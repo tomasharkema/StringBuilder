@@ -15,7 +15,7 @@ public struct MultipleLines {
   }
 }
 
-extension MultipleLines: StringBuildable { }
+extension MultipleLines: StringBuildable {}
 
 // extension MultipleLines: StringView {
 //   public var body: some StringView {

@@ -1,0 +1,5 @@
+--ifdef outdent
+--swiftversion 5.9
+--maxwidth 100
+--indent 2
+--asynccapturing

@@ -23,7 +23,7 @@ public struct Indented {
 
 extension Indented: StringBuildable {
   public var lines: [String] {
-    let flattened = partialResult //flatten(in: partialResult)
+    let flattened = partialResult // flatten(in: partialResult)
     let eles = flattened.flatMap {
       let svalue = $0.lines
       let mapped = svalue.map {

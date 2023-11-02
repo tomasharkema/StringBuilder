@@ -1,5 +1,5 @@
 //
-//  CustomStringResultConvertible.swift
+//  CustomStringBuilderConvertible.swift
 //
 //
 //  Created by Tomas Harkema on 21/08/2023.

@@ -8,9 +8,7 @@
 import Foundation
 
 public struct Empty: StringBuildable {
-
   public let lines: [String] = [" "]
 
   public init() {}
-  
 }

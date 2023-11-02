@@ -19,8 +19,8 @@ public struct Paragraph {
 }
 
 extension Paragraph: StringBuildable {
-   public var lines: [String] {
-    let flattened = partialResult//flatten(in: partialResult)
+  public var lines: [String] {
+    let flattened = partialResult // flatten(in: partialResult)
     let eles = flattened.flatMap {
       let svalue = $0.lines
       let mapped = svalue.flatMap { mapElement in

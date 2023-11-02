@@ -1,5 +1,5 @@
 //
-//  StringConvertible.swift
+//  StringBuildable.swift
 //
 //
 //  Created by Tomas Harkema on 31/10/2023.
@@ -16,11 +16,11 @@ public extension StringBuildable {
     lines.joined(separator: "\n")
   }
 
- var description: String {
+  var description: String {
     string
   }
 
- var debugDescription: String {
+  var debugDescription: String {
     string
   }
 }

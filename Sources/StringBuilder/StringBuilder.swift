@@ -5,9 +5,11 @@ public enum StringBuilder {
 
   public typealias Component = [any StringBuildable]
 
-   public static func buildExpression(_ expression: any CustomStringBuilderConvertible) -> Component {
-     expression.descriptionBuilder
-   }
+  public static func buildExpression(_ expression: any CustomStringBuilderConvertible)
+    -> Component
+  {
+    expression.descriptionBuilder
+  }
 
   public static func buildExpression(_ expression: String) -> Component {
     [Line(expression)]

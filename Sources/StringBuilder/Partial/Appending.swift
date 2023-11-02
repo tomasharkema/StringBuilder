@@ -8,7 +8,6 @@
 import Foundation
 
 public struct Appending: StringBuildable {
-
   private let parts: () -> [any PartialBuilable]
 
   public init(@PartialBuilder _ handler: @escaping () -> [any PartialBuilable]) {
