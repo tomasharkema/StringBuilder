@@ -15,7 +15,7 @@ public struct LineColor: StringModifier {
 }
 
 public extension StringBuildable {
-  func color(_ colorr: TextColor) -> any StringBuildable {
-    modifier(LineColor(colorr))
+  func color(_ color: TextColor) -> any StringBuildable {
+    modifier(LineColor(color))
   }
 }
