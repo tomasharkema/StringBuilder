@@ -14,21 +14,21 @@ COPY Sources Sources
 COPY Tests Tests
 
 FROM source AS source-debug
-RUN swift build
+RUN swift build -v
 
 FROM source-debug AS source-test
-RUN swift test
+RUN swift test -v --enable-code-coverage
 
 FROM source AS source-release
-RUN swift build -c release
+RUN swift build -v -c release
 
-FROM source-test AS docs
+FROM source-debug AS docs
 
 COPY docs.sh .
 
 RUN sh docs.sh
 
 FROM swift:5.9.1
-# COPY --from=source-debug /root/.build/debug /root/.build/debug
+COPY --from=source-test /root/.build/debug /root/.build/debug
 COPY --from=source-release /root/.build/release /root/.build/release
 COPY --from=docs /root/docs /root/docs
