@@ -1,0 +1,9 @@
+▿ 8 elements
+  - "\u{1B}[1mHELLO\u{1B}[0m"
+  - "\u{1B}[1mHELLO\u{1B}[0m"
+  - "\u{1B}[1mHELLO\u{1B}[0m"
+  - "\u{1B}[1mHELLO\u{1B}[0m"
+  - "\u{1B}[1mANSI ENABLED\u{1B}[0m"
+  - "\u{1B}[1mHELLO\u{1B}[0m"
+  - "\u{1B}[1mHELLO\u{1B}[0m"
+  - "\u{1B}[1mHELLO\u{1B}[0m"

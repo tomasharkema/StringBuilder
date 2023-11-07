@@ -1,21 +1,15 @@
 import ANSIEscapeCode
 
 public struct LineColor: StringModifier {
-  private let color: TextColor
+  let color: TextColor
 
   public init(_ color: TextColor) {
     self.color = color
   }
-
-  public func body(content: any StringBuildable) -> any StringBuildable {
-    Map(content) {
-      $0.color(color)
-    }
-  }
 }
 
-public extension StringBuildable {
-  func color(_ color: TextColor) -> any StringBuildable {
+public extension StringView {
+  func textColor(_ color: TextColor) -> some StringView {
     modifier(LineColor(color))
   }
 }

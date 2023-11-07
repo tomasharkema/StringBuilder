@@ -1,0 +1,5 @@
+▿ 4 elements
+  - "\u{1B}[31mHELLO\u{1B}[0m"
+  - "\u{1B}[31mHELLO\u{1B}[0m"
+  - "\u{1B}[31mHELLO\u{1B}[0m"
+  - "\u{1B}[31mHELLO\u{1B}[0m"

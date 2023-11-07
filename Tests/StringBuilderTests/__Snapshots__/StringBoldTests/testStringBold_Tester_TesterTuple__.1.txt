@@ -1,0 +1,3 @@
+▿ 2 elements
+  - "\u{1B}[1mHELLO\u{1B}[0m"
+  - "\u{1B}[1mHELLO\u{1B}[0m"

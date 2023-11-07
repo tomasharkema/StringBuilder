@@ -1,0 +1,28 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "sourceLanguages": ["swift"],
+      "args": [],
+      "cwd": "${workspaceFolder:StringBuilder}",
+      "name": "Debug TestRunner",
+      "program": "${workspaceFolder:StringBuilder}/.vscodebuild/debug/TestRunner",
+      "preLaunchTask": "swift: Build Debug TestRunner"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "sourceLanguages": ["swift"],
+      "args": [],
+      "cwd": "${workspaceFolder:StringBuilder}",
+      "name": "Release TestRunner",
+      "program": "${workspaceFolder:StringBuilder}/.vscodebuild/release/TestRunner",
+      "preLaunchTask": "swift: Build Release TestRunner"
+    }
+  ]
+}

@@ -1,10 +1,3 @@
-//
-//  PartialBuilder.swift
-//
-//
-//  Created by Tomas Harkema on 31/10/2023.
-//
-
 import Foundation
 
 @resultBuilder
@@ -25,10 +18,10 @@ public enum PartialBuilder {
     [expression]
   }
 
-  //  public static func buildExpression(_ expression: any CustomStringBuilderConvertible) ->
-  //  Component {
-  //    buildExpression(expression.descriptionBuilder.map(\.string).joined(separator: "\n"))
-  //  }
+  @_disfavoredOverload
+  public static func buildExpression(_ expression: any StringView) -> Component {
+    [_PartialFromStringView(expression)]
+  }
 
   public static func buildBlock(_ components: Component...) -> Component {
     components

@@ -3,3 +3,4 @@
 --maxwidth 100
 --indent 2
 --asynccapturing
+--header strip
