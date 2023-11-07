@@ -13,14 +13,6 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(
-      url: "https://github.com/realm/SwiftLint.git",
-      from: "0.53.0"
-    ),
-    .package(
-      url: "https://github.com/nicklockwood/SwiftFormat.git",
-      from: "0.52.0"
-    ),
     .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.12.0"),
     .package(url: "https://github.com/flintbox/ANSIEscapeCode", from: "0.1.1"),
     .package(url: "https://github.com/apple/swift-algorithms", from: "1.1.0"),
@@ -99,14 +91,28 @@ let isSubDependency: () -> Bool = {
 
 if isXcode, !isSubDependency() {
 #if !os(Linux)
+if ProcessInfo.processInfo.environment["SWIFT_LINT_SKIP"] != "true" { 
+  package.dependencies.append(    .package(
+      url: "https://github.com/realm/SwiftLint.git",
+      from: "0.53.0"
+    ))
 
   for target in package.targets {
     var plugin = target.plugins ?? []
     plugin.append(.plugin(name: "SwiftLintPlugin", package: "SwiftLint"))
     target.plugins = plugin
   }
-
+}
 #endif
+}
+
+if isXcode, !isSubDependency() {
+  if ProcessInfo.processInfo.environment["SWIFT_FORMAT_SKIP"] != "true" {
+    package.dependencies.append(.package(
+      url: "https://github.com/nicklockwood/SwiftFormat.git",
+      from: "0.52.0"
+    ))
+  }
 }
 
  if !isSubDependency() {

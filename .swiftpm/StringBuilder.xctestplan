@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "6DB033A3-D1B0-4569-8E99-61F4F8577BBC",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "StringBuilderTests",
+        "name" : "StringBuilderTests"
+      }
+    }
+  ],
+  "version" : 1
+}
