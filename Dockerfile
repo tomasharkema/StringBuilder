@@ -6,15 +6,14 @@ FROM base AS package
 
 WORKDIR /root
 
+COPY Package.* .
+
 ENV SWIFT_FORMAT_SKIP=true
 ENV SWIFT_LINT_SKIP=true
 ENV SWIFT_BUILD_DEPS=true
 
-COPY Package.* .
-
 RUN --mount=type=cache,target=/tmp/build swift package resolve \
     --only-use-versions-from-resolved-file \
-    --skip-update \
     --scratch-path /tmp/build && \
     cp -r /tmp/build /root/.build
 
@@ -27,21 +26,21 @@ RUN swift --version
 
 FROM source AS source-dependencies
 
-RUN swift build -v \
+RUN swift build \
     --target _BuildDependencies
 
 FROM source-dependencies AS source-debug
-RUN swift build -v \
+RUN swift build \
     --target TestRunner
 
-FROM source-debug AS source-test-build
-RUN swift build -v --build-tests
+FROM  source-dependencies AS source-test-build
+RUN swift build --build-tests
 
 FROM source-test-build AS source-test
-RUN swift test -v # --enable-code-coverage
+RUN swift test --enable-code-coverage
 
 FROM source-test AS source-release
-RUN swift build -v -c release
+RUN swift build -c release
 
 FROM source-debug AS docs
 
