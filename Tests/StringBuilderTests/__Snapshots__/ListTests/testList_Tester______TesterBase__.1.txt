@@ -1,0 +1,4 @@
+▿ 3 elements
+  - "HELLO"
+  - "HELLO HELLO"
+  - "HELLO \u{1B}[1mDERP\u{1B}[0m DERP"

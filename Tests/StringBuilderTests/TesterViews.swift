@@ -60,7 +60,8 @@ struct TesterEnvView: StringView {
     .bold()
     Line("HELLO")
   }
-    var descriptionBuilder: some StringView {
+
+  var descriptionBuilder: some StringView {
     body
   }
 
@@ -68,8 +69,6 @@ struct TesterEnvView: StringView {
     body
   }
 }
-
-
 
 struct PrintAnsiEnabledView: StringView {
   @Environment(\.ansiEnabled)
@@ -82,7 +81,8 @@ struct PrintAnsiEnabledView: StringView {
       Line("ANSI DISABLED")
     }
   }
-    var descriptionBuilder: some StringView {
+
+  var descriptionBuilder: some StringView {
     body
   }
 
@@ -104,8 +104,9 @@ struct TesterInherited: StringView {
   }
 }
 
-
-struct TesterCustomWrapper<T: StringView>: CustomStringBuilderConvertible, CustomDebugStringBuilderConvertible {
+struct TesterCustomWrapper<T: StringView>: CustomStringBuilderConvertible,
+  CustomDebugStringBuilderConvertible
+{
   let content: T
 
   init(content: T) {

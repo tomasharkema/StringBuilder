@@ -4,8 +4,13 @@ import XCTest
 import XCTestParametrizedMacro
 
 final class OptionalContentTests: XCTestCase {
-
-  @Parametrize(input: [TesterBase(), TesterTuple(), TesterMixed(), TesterEnv(), PrintAnsiEnabledView()])
+  @Parametrize(input: [
+    TesterBase(),
+    TesterTuple(),
+    TesterMixed(),
+    TesterEnv(),
+    PrintAnsiEnabledView(),
+  ])
   func testOptional(input tester: some StringView) {
     let test = OptionalTester(element: tester)
     assertStringView(view: test)
@@ -13,13 +18,13 @@ final class OptionalContentTests: XCTestCase {
 }
 
 private struct OptionalTester<T: StringView>: StringView {
-    let element: T
+  let element: T
 
   init(element: T) {
     self.element = element
   }
 
-var body: some StringView {
+  var body: some StringView {
     if true {
       Line("TRUE!")
       element

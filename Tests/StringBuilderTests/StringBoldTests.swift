@@ -4,7 +4,13 @@ import XCTest
 import XCTestParametrizedMacro
 
 final class StringBoldTests: XCTestCase {
-  @Parametrize(input: [TesterBase(), TesterTuple(), TesterMixed(), TesterEnv(), PrintAnsiEnabledView()])
+  @Parametrize(input: [
+    TesterBase(),
+    TesterTuple(),
+    TesterMixed(),
+    TesterEnv(),
+    PrintAnsiEnabledView(),
+  ])
   func testStringBold(input tester: some StringView) {
     let test = BoldTester(content: tester)
     assertStringView(view: test)

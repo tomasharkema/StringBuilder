@@ -40,25 +40,23 @@ let package = Package(
       dependencies: [
         "StringBuilder",
         "XCTestParametrizedMacro",
-
         .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
       ],
       exclude: ["__Snapshots__"]
     ),
-    .executableTarget(name: "TestRunner"),
+    .executableTarget(name: "TestRunner", dependencies: ["StringBuilder"]),
   ]
 )
 
 let swiftSettings: [SwiftSetting] = [
   .enableUpcomingFeature("ConciseMagicFile"),
   .enableUpcomingFeature("BareSlashRegexLiterals"),
-  .enableUpcomingFeature("ExistentialAny"),
-  .enableUpcomingFeature("DisableOutwardActorInference"),
-  .enableUpcomingFeature("ForwardTrailingClosures"),
+  // .enableUpcomingFeature("ExistentialAny"),
+  // .enableUpcomingFeature("DisableOutwardActorInference"),
+  // .enableUpcomingFeature("ForwardTrailingClosures"),
 //  .enableUpcomingFeature("InternalImportsByDefault"),
 //  .enableExperimentalFeature("NestedProtocols"),
 //  .enableExperimentalFeature("AccessLevelOnImport"),
-//  .unsafeFlags(["-enable-library-evolution"]),
 ]
 
 for target in package.targets {
@@ -91,18 +89,18 @@ let isSubDependency: () -> Bool = {
 
 if isXcode, !isSubDependency() {
 #if !os(Linux)
-if ProcessInfo.processInfo.environment["SWIFT_LINT_SKIP"] != "true" { 
-  package.dependencies.append(    .package(
+  if ProcessInfo.processInfo.environment["SWIFT_LINT_SKIP"] != "true" {
+    package.dependencies.append(.package(
       url: "https://github.com/realm/SwiftLint.git",
       from: "0.53.0"
     ))
 
-  for target in package.targets {
-    var plugin = target.plugins ?? []
-    plugin.append(.plugin(name: "SwiftLintPlugin", package: "SwiftLint"))
-    target.plugins = plugin
+    for target in package.targets {
+      var plugin = target.plugins ?? []
+      plugin.append(.plugin(name: "SwiftLintPlugin", package: "SwiftLint"))
+      target.plugins = plugin
+    }
   }
-}
 #endif
 }
 
@@ -115,9 +113,19 @@ if isXcode, !isSubDependency() {
   }
 }
 
- if !isSubDependency() {
-   package.dependencies.append(.package(
-     url: "https://github.com/apple/swift-docc-plugin.git",
-     from: "1.3.0"
-   ))
- }
+if !isSubDependency() {
+  package.dependencies.append(.package(
+    url: "https://github.com/apple/swift-docc-plugin.git",
+    from: "1.3.0"
+  ))
+}
+
+if ProcessInfo.processInfo.environment["SWIFT_BUILD_DEPS"] == "true" {
+  let dependencies: [Target.Dependency] = package.targets.flatMap {
+      return $0.dependencies
+  }
+  for dependency in dependencies {
+    print("DEPENDENCIES:", dependency)
+  }
+  package.targets.append(.target(name: "_BuildDependencies", dependencies: dependencies))
+}

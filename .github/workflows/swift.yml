@@ -20,7 +20,7 @@ jobs:
         xcode-version: "15.0"
     - uses: actions/checkout@v3
     - name: Build
-      run: swift build
+      run: swift build --target TestRunner
     - name: Run tests
       run: swift test # --enable-code-coverage
     - name: Upload coverage reports to Codecov

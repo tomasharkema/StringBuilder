@@ -1,0 +1,9 @@
+▿ 8 elements
+  - "\u{1B}[1mDERP\u{1B}[0m HELLO"
+  - "HELLO"
+  - "HELLO"
+  - "HELLO"
+  - "ANSI ENABLED"
+  - "HELLO"
+  - "HELLO"
+  - "HELLO DERP"

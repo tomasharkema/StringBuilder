@@ -1,6 +1,4 @@
 @main
-struct TestRunner {
-    static func main() {
-        
-    }
+enum TestRunner {
+  static func main() {}
 }

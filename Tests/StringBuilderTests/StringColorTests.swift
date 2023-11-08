@@ -4,7 +4,13 @@ import XCTest
 import XCTestParametrizedMacro
 
 final class StringColorTests: XCTestCase {
-  @Parametrize(input: [TesterBase(), TesterTuple(), TesterMixed(), TesterEnv(), IndentedColorTester()])
+  @Parametrize(input: [
+    TesterBase(),
+    TesterTuple(),
+    TesterMixed(),
+    TesterEnv(),
+    IndentedColorTester(),
+  ])
   func testStringColor(input tester: any StringView) {
     assertStringView(view: tester)
   }

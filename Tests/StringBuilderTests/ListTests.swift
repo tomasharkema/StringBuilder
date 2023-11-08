@@ -4,7 +4,13 @@ import XCTest
 import XCTestParametrizedMacro
 
 final class ListTests: XCTestCase {
-  @Parametrize(input: [TesterBase(), TesterTuple(), TesterMixed(), TesterEnv(), PrintAnsiEnabledView()])
+  @Parametrize(input: [
+    TesterBase(),
+    TesterTuple(),
+    TesterMixed(),
+    TesterEnv(),
+    PrintAnsiEnabledView(),
+  ])
   func testList(input tester: any StringView) {
     let test = LocalTester(content: tester)
     assertStringView(view: test)

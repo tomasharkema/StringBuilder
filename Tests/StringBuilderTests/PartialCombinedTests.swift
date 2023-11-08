@@ -4,8 +4,13 @@ import XCTest
 import XCTestParametrizedMacro
 
 final class PartialCombinedTests: XCTestCase {
-
-    @Parametrize(input: [TesterBase(), TesterTuple(), TesterMixed(), TesterEnv(), PrintAnsiEnabledView()])
+  @Parametrize(input: [
+    TesterBase(),
+    TesterTuple(),
+    TesterMixed(),
+    TesterEnv(),
+    PrintAnsiEnabledView(),
+  ])
   func testPartialCombined(input tester: some StringView) {
     let test = PartialCombinedTester(content: tester)
     assertStringView(view: test)
@@ -24,4 +29,3 @@ private struct PartialCombinedTester<T: StringView>: StringView {
     }
   }
 }
-

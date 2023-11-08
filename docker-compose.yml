@@ -1,0 +1,3 @@
+services:
+  swift-stringbuilder:
+    build: .

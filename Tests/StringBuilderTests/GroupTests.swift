@@ -4,7 +4,13 @@ import XCTest
 import XCTestParametrizedMacro
 
 final class GroupTests: XCTestCase {
-  @Parametrize(input: [TesterBase(), TesterTuple(), TesterMixed(), TesterEnv(), PrintAnsiEnabledView()])
+  @Parametrize(input: [
+    TesterBase(),
+    TesterTuple(),
+    TesterMixed(),
+    TesterEnv(),
+    PrintAnsiEnabledView(),
+  ])
   func testGroup(input tester: some StringView) {
     let group = Grouper(content: tester)
     assertStringView(view: group)
